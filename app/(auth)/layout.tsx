@@ -23,11 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <NextTopLoader />
-        {/* <AuthProvider> */}
-        <Header />
-        <div>{children}</div>
-        {/* </AuthProvider> */}
+        <AuthProvider>
+          <NextTopLoader />
+          <Header />
+          <div>{children}</div>
+        </AuthProvider>
       </body>
     </html>
   );
