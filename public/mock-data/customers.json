@@ -1,0 +1,46 @@
+{
+  "customers": [
+    {
+      "id": "c1",
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "phoneNumber": "+8801712345678",
+      "address": {
+        "street": "123 Main St",
+        "city": "Dhaka",
+        "postalCode": "1205",
+        "country": "Bangladesh"
+      },
+      "orders": ["o1", "o3"]
+    },
+    {
+      "id": "c2",
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "email": "jane.smith@example.com",
+      "phoneNumber": "+8801718765432",
+      "address": {
+        "street": "456 Elm St",
+        "city": "Chittagong",
+        "postalCode": "4000",
+        "country": "Bangladesh"
+      },
+      "orders": ["o2"]
+    },
+    {
+      "id": "c3",
+      "firstName": "Mohammad",
+      "lastName": "Rahman",
+      "email": "mohammad.rahman@example.com",
+      "phoneNumber": "+8801712344321",
+      "address": {
+        "street": "789 Oak St",
+        "city": "Sylhet",
+        "postalCode": "3100",
+        "country": "Bangladesh"
+      },
+      "orders": []
+    }
+  ]
+}
