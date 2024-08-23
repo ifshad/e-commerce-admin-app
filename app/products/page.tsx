@@ -39,7 +39,7 @@ const ProductsPage = () => {
     getProducts();
   }, []);
   return (
-    <div>
+    <div className="container">
       <div>
         <h1 className="lg:text-6xl md:text-4xl text-3xl font-semibold lg:m-5 md:m-3 m-2 text-center">
           Featured Products

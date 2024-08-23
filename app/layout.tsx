@@ -3,6 +3,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import NextTopLoader from "nextjs-toploader";
+import Sidebar from "@/components/admin-panel/sidebar";
 
 const roboto = Roboto({
   weight: ["400", "500", "700", "900"],
@@ -23,8 +24,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.className}>
         <NextTopLoader />
-        <Header />
-        {children}
+        <div className="flex">
+          <Sidebar />
+          <div className="w-full">
+            <Header />
+            <div className="ml-64 mt-16 p-6">{children}</div>
+          </div>
+        </div>
       </body>
     </html>
   );
