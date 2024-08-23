@@ -5,6 +5,8 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { loginUser } from "@/utils/auth";
 import Swal from "sweetalert2";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/firebase/firebase.config";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -18,47 +20,49 @@ const LoginPage = () => {
       PhoneNumber: phoneNumber,
       Password: password,
     };
-    const token = loginUser(phoneNumber, password);
-    if (token) {
-      // Redirect to dashboard or home
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        },
+
+    signInWithEmailAndPassword(auth, phoneNumber, password)
+      .then((userCredential) => {
+        // Signed in
+        const user: any = userCredential.user;
+        const lastLoginTime: any = user.metadata.lastSignInTime;
+        console.log(user);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "success",
+          title: "Signed in successfully",
+        });
+        router.push("/");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "error",
+          title: "An error occured!",
+        });
       });
-      Toast.fire({
-        icon: "success",
-        title: "Signed in successfully",
-      });
-      e.target.reset();
-      router.push("/");
-      console.log(phoneNumber);
-    } else {
-      // Show error
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        },
-      });
-      Toast.fire({
-        icon: "error",
-        title: "An error occured!",
-      });
-      console.log("an error occured");
-    }
-    
   };
 
   return (

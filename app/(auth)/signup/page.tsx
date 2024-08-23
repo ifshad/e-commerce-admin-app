@@ -5,6 +5,8 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { registerUser } from "@/utils/auth";
 import Swal from "sweetalert2";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/firebase/firebase.config";
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -24,6 +26,53 @@ const SignUpPage = () => {
     };
     console.log(signupInfo);
     // setLoading(true);
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const creationTime: any = userCredential.user.metadata.creationTime;
+        const user: any = {
+          name: name,
+          email: email,
+          password: password,
+          number: number,
+          creationTime: creationTime,
+        };
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "success",
+          title: "Signed in successfully",
+        });
+        router.push("/login");
+      })
+      .catch((error) => {
+        console.log(error);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "error",
+          title: "An error occured!",
+        });
+      });
+
     const token = registerUser(number, password, name, email);
     if (token) {
       // Redirect to dashboard or home
