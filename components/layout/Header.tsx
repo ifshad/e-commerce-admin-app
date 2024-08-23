@@ -12,6 +12,7 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuSub,
   DropdownMenuSubContent,
@@ -30,10 +31,34 @@ const Header: FC = () => {
           <span className="font-bold text-lg">Admin</span>
         </Link>
       </div>
-      <div className="hidden md:flex">
+      <div className="hidden md:flex gap-3">
         <Button variant="link" className="">
-          <Link href="/products">Dashboard</Link>
+          <Link href="/products">Products</Link>
         </Button>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="link" className="outline-none">
+              Admin
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56 bg-[#D9D9D9] border-[#D9D9D9]/20 shadow-lg p-3 rounded-sm translate-x-20 translate-y-2">
+            <DropdownMenuGroup>
+              <DropdownMenuItem>
+                <Link href="/admin/customers">Customers</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/admin/orders">Orders</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/admin/products">Products</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/admin/products/add-product">Products</Link>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
       <div className="hidden md:flex items-center gap-3">
         <Button variant="link" className="">
