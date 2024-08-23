@@ -26,17 +26,17 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.className}>
         <NextTopLoader />
-        <AuthProvider>
-          <ProtectRoute>
-            <div className="flex">
-              <Sidebar />
-              <div className="w-full">
-                <Header />
-                <div className="ml-64 p-6">{children}</div>
-              </div>
+        {/* <AuthProvider> */}
+        <ProtectRoute>
+          <div className="flex">
+            <Sidebar />
+            <div className="w-full">
+              <Header />
+              <div className="ml-64 p-6">{children}</div>
             </div>
-          </ProtectRoute>
-        </AuthProvider>
+          </div>
+        </ProtectRoute>
+        {/* </AuthProvider> */}
       </body>
     </html>
   );
