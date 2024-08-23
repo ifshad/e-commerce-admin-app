@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
 import { useRouter } from "next/navigation";
-import { registerUser } from "@/utils/auth";
+// import { registerUser } from "@/utils/auth";
 import Swal from "sweetalert2";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/firebase/firebase.config";
@@ -73,45 +73,45 @@ const SignUpPage = () => {
         });
       });
 
-    const token = registerUser(number, password, name, email);
-    if (token) {
-      // Redirect to dashboard or home
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        },
-      });
-      Toast.fire({
-        icon: "success",
-        title: "Signed in successfully",
-      });
-      e.target.reset();
-      router.push("/");
-    } else {
-      // Show error
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        },
-      });
-      Toast.fire({
-        icon: "error",
-        title: "An error occured!",
-      });
-      console.log("an error occured");
-    }
+    // const token = registerUser(number, password, name, email);
+    // if (token) {
+    //   // Redirect to dashboard or home
+    //   const Toast = Swal.mixin({
+    //     toast: true,
+    //     position: "top-end",
+    //     showConfirmButton: false,
+    //     timer: 3000,
+    //     timerProgressBar: true,
+    //     didOpen: (toast) => {
+    //       toast.onmouseenter = Swal.stopTimer;
+    //       toast.onmouseleave = Swal.resumeTimer;
+    //     },
+    //   });
+    //   Toast.fire({
+    //     icon: "success",
+    //     title: "Signed in successfully",
+    //   });
+    //   e.target.reset();
+    //   router.push("/");
+    // } else {
+    //   // Show error
+    //   const Toast = Swal.mixin({
+    //     toast: true,
+    //     position: "top-end",
+    //     showConfirmButton: false,
+    //     timer: 3000,
+    //     timerProgressBar: true,
+    //     didOpen: (toast) => {
+    //       toast.onmouseenter = Swal.stopTimer;
+    //       toast.onmouseleave = Swal.resumeTimer;
+    //     },
+    //   });
+    //   Toast.fire({
+    //     icon: "error",
+    //     title: "An error occured!",
+    //   });
+    //   console.log("an error occured");
+    // }
   }
   return (
     <div className="container py-14 lg:py-20">

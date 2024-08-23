@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
 import { useRouter } from "next/navigation";
-import { loginUser } from "@/utils/auth";
+// import { loginUser } from "@/utils/auth";
 import Swal from "sweetalert2";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/firebase/firebase.config";

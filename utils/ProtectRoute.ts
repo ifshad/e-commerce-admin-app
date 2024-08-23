@@ -1,5 +1,6 @@
 "use client"
 
+import { useAuthContext } from "@/providers/AuthContext";
 import { useRouter } from "next/navigation";
 import { useEffect, ReactNode } from "react";
 
@@ -11,8 +12,8 @@ const ProtectRoute = ({ children }: ProtectRouteProps) => {
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem("jwt");
-    if (!token) {
+    const { user, loading } = useAuthContext();
+    if (!user) {
       router.push("/login");
     }
   }, [router]);
