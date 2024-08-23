@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import NextTopLoader from "nextjs-toploader";
 import { AuthProvider } from "@/providers/AuthContext";
 
 const roboto = Roboto({
@@ -23,7 +21,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <AuthProvider>{children}</AuthProvider>
+        {/* <AuthProvider>{children}</AuthProvider> */}
+        {children}
       </body>
     </html>
   );
