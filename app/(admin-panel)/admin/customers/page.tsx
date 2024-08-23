@@ -11,6 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 interface Customer {
@@ -79,7 +80,9 @@ const AdminCustomerList = () => {
                 </ul>
               </TableCell>
               <TableCell>
-                <Button>Details</Button>
+                <Button>
+                  <Link href={`/admin/customers/${customer.id}`}>Details</Link>
+                </Button>
               </TableCell>
             </TableRow>
           ))}

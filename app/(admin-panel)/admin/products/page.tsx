@@ -11,6 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 interface Product {
@@ -24,7 +25,7 @@ interface Product {
 
 const AdminProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
-//   console.log(products);
+  //   console.log(products);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -63,7 +64,9 @@ const AdminProductList = () => {
               <TableCell>{product.stock}</TableCell>
               <TableCell className="text-right">{product.price}</TableCell>
               <TableCell>
-                <Button>Details</Button>
+                <Button>
+                  <Link href={`/admin/products/${product.id}`}>Details</Link>
+                </Button>
               </TableCell>
             </TableRow>
           ))}

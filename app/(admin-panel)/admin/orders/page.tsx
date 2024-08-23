@@ -12,6 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 interface Order {
@@ -86,7 +87,9 @@ const AdminOrderList = () => {
                 </Table>
               </TableCell>
               <TableCell>
-                <Button>Details</Button>
+              <Button>
+                  <Link href={`/admin/orders/${order.id}`}>Details</Link>
+                </Button>
               </TableCell>
             </TableRow>
           ))}
