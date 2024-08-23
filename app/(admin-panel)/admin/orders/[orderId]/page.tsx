@@ -17,7 +17,7 @@ export default async function OrderDetailsPage({
   return (
     <div className="">
       <h1 className="lg:text-6xl md:text-4xl text-3xl font-semibold lg:m-5 md:m-3 m-2 text-center">
-        Product Details
+        Order Details
       </h1>
       {/* <div className="grid grid-cols-1 md:grid-cols-2 md:space-x-5 relative">
         <div className="absolute -bottom-4 md:bottom-4 md:left-[600px]">

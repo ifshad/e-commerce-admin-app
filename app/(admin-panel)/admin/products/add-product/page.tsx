@@ -23,30 +23,22 @@ const SellerPage = () => {
   async function handleSubmit(e: any) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
-    const productName: any = form.get("productName");
+    const name: any = form.get("name");
     const imageUrl: any = form.get("imageUrl");
-    const brandName: any = form.get("brandName");
+    const category: any = form.get("category");
     const price: any = form.get("price");
-    const shortDescription: any = form.get("shortDescription");
-    const rating: any = form.get("rating");
+    const description: any = form.get("description");
+    const stock: any = form.get("stock");
 
     const productInfo: object = {
-      productName,
+      name,
       imageUrl,
-      brandName,
+      category,
       price,
-      shortDescription,
-      rating,
+      description,
+      stock,
     };
 
-    // await axios.post("https://tech-dynasty-server.vercel.app/products", {
-    //   productName: productName,
-    //   imageUrl: imageUrl,
-    //   brandName: brandName,
-    //   price: price,
-    //   shortDescription: shortDescription,
-    //   rating: rating,
-    // });
     e.target.reset();
     Toast.fire({
       icon: "success",
@@ -80,14 +72,14 @@ const SellerPage = () => {
           <div className="relative">
             <input
               type="text"
-              name="productName"
-              id="productName"
+              name="name"
+              id="name"
               className="p-3 bg-transparent border border-gray-200 rounded-[.5rem] outline-none peer w-full placeholder-transparent focus:border-primary"
-              placeholder="productName"
+              placeholder="name"
               required
             />
             <label
-              htmlFor="productName"
+              htmlFor="name"
               className="absolute left-3 -top-3 cursor-text  bg-secondary-color px-1 text-base lg:peer-focus:text-base md:peer-focus:text-base peer-focus:text-sm peer-placeholder-shown:text-slate-400 peer-placeholder-shown:translate-y-6 peer-placeholder-shown:font-medium peer-placeholder-shown:bg-white peer-focus:bg-white  peer-focus:-translate-y-0  transition-all duration-200"
             >
               Product Name
@@ -96,30 +88,30 @@ const SellerPage = () => {
           <div className="relative">
             <input
               type="text"
-              name="brandName"
-              id="brandName"
+              name="category"
+              id="category"
               className="p-3 bg-transparent border border-gray-200 rounded-[.5rem] outline-none peer w-full placeholder-transparent focus:border-primary"
-              placeholder="brandName"
+              placeholder="category"
               required
             />
             <label
-              htmlFor="brandName"
+              htmlFor="category"
               className="absolute left-3 -top-3 cursor-text bg-secondary-color px-1 text-base lg:peer-focus:text-base md:peer-focus:text-base peer-focus:text-sm peer-placeholder-shown:text-slate-400 peer-placeholder-shown:translate-y-6 peer-placeholder-shown:font-medium peer-placeholder-shown:bg-white peer-focus:bg-white  peer-focus:-translate-y-0 transition-all duration-200"
             >
-              Brand Name
+              Category
             </label>
           </div>
           <div className="relative">
             <input
               type="text"
-              name="shortDescription"
-              id="shortDescription"
+              name="description"
+              id="description"
               className="p-3 bg-transparent border border-gray-200 rounded-[.5rem] outline-none peer w-full placeholder-transparent focus:border-primary"
-              placeholder="shortDescription"
+              placeholder="description"
               required
             />
             <label
-              htmlFor="shortDescription"
+              htmlFor="description"
               className="absolute left-3 -top-3 cursor-text bg-secondary-color px-1 text-base lg:peer-focus:text-base md:peer-focus:text-base peer-focus:text-sm peer-placeholder-shown:text-slate-400 peer-placeholder-shown:translate-y-6 peer-placeholder-shown:font-medium peer-placeholder-shown:bg-white peer-focus:bg-white  peer-focus:-translate-y-0 transition-all duration-200"
             >
               Short Description
@@ -144,17 +136,17 @@ const SellerPage = () => {
           <div className="relative">
             <input
               type="number"
-              name="rating"
-              id="rating"
+              name="stock"
+              id="stock"
               className="p-3 bg-transparent border border-gray-200 rounded-[.5rem] outline-none peer w-full placeholder-transparent focus:border-primary"
-              placeholder="rating"
+              placeholder="stock"
               required
             />
             <label
-              htmlFor="rating"
+              htmlFor="stock"
               className="absolute left-3 -top-3 cursor-text bg-secondary-color px-1 text-base lg:peer-focus:text-base md:peer-focus:text-base peer-focus:text-sm peer-placeholder-shown:text-slate-400 peer-placeholder-shown:translate-y-6 peer-placeholder-shown:font-medium peer-placeholder-shown:bg-white peer-focus:bg-white  peer-focus:-translate-y-0 transition-all duration-200"
             >
-              Rating
+              Stock
             </label>
           </div>
           <Button className="w-full">
