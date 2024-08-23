@@ -29,6 +29,7 @@ const AdminProductList = () => {
   useEffect(() => {
     const getProducts = async () => {
       const data = await fetchProducts();
+      // console.log(data)
       setProducts(data.products);
     };
 
