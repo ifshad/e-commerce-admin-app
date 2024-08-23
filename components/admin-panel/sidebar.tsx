@@ -8,19 +8,24 @@ import { FaBoxOpen, FaUsers } from "react-icons/fa";
 import { usePathname, useRouter } from "next/navigation";
 
 const Sidebar = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const router = useRouter(); // Initialize the router
+  const [productIsExpanded, setProductIsExpanded] = useState(false);
+  const [customerIsExpanded, setCustomerIsExpanded] = useState(false);
+  const router = useRouter(); 
   const pathname = usePathname();
   console.log(pathname);
 
-  const toggleExpand = () => {
-    setIsExpanded(!isExpanded);
+  const toggleProductExpand = () => {
+    setProductIsExpanded(!productIsExpanded);
+  };
+  
+  const toggleCustomerExpand = () => {
+    setCustomerIsExpanded(!customerIsExpanded);
   };
 
   return (
     <div className="backdrop-blur-lg bg-[#D9D9D9] bg-opacity-[13.5%] min-h-screen w-64 border-r fixed z-50">
       <div className="px-6 py-4">
-        <h1 className="text-xl font-bold">ZARGANZ</h1>
+        <h1 className="text-xl font-bold">E-Commerce</h1>
         <p className="text-sm text-gray-500">Head Office</p>
       </div>
       <nav className="mt-10 px-6">
@@ -39,7 +44,7 @@ const Sidebar = () => {
 
           <li className="mb-4">
             <div
-              onClick={toggleExpand}
+              onClick={toggleProductExpand}
               className={`flex items-center cursor-pointer hover:text-purple-500 ${
                 pathname === "/products" ||
                 pathname === "/admin/products" ||
@@ -52,11 +57,11 @@ const Sidebar = () => {
               Products
               <FiChevronDown
                 className={`w-4 h-4 ml-auto transition-transform ${
-                  isExpanded ? "rotate-180" : ""
+                  productIsExpanded ? "rotate-180" : ""
                 }`}
               />
             </div>
-            {isExpanded && (
+            {productIsExpanded && (
               <ul className="ml-8 mt-2">
                 <li className="mb-2">
                   <Link
@@ -114,9 +119,10 @@ const Sidebar = () => {
           </li>
 
           <li className="mb-4">
-            <Link
-              href="/admin/customers"
-              className={`flex items-center hover:text-purple-500 ${
+            <div
+              onClick={toggleCustomerExpand}
+              className={`flex items-center cursor-pointer hover:text-purple-500 ${
+                pathname === "/admin/add-customer" ||
                 pathname === "/admin/customers"
                   ? "text-purple-600"
                   : "text-gray-700"
@@ -124,7 +130,41 @@ const Sidebar = () => {
             >
               <FaUsers className="w-6 h-6 mr-3" />
               Customers
-            </Link>
+              <FiChevronDown
+                className={`w-4 h-4 ml-auto transition-transform ${
+                  customerIsExpanded ? "rotate-180" : ""
+                }`}
+              />
+            </div>
+            {customerIsExpanded && (
+              <ul className="ml-8 mt-2">
+                <li className="mb-2">
+                  <Link
+                    href="/admin/customers"
+                    className={`flex items-center hover:text-purple-500 ${
+                      pathname === "/admin/customers"
+                        ? "text-purple-600"
+                        : "text-gray-700"
+                    }`}
+                  >
+                    Customers
+                  </Link>
+                </li>
+
+                <li className="mb-2">
+                  <Link
+                    href="/admin/customers/add-customer"
+                    className={`flex items-center hover:text-purple-500 ${
+                      pathname === "/admin/customers/add-customer"
+                        ? "text-purple-600"
+                        : "text-gray-700"
+                    }`}
+                  >
+                    Add Customer
+                  </Link>
+                </li>
+              </ul>
+            )}
           </li>
         </ul>
       </nav>
