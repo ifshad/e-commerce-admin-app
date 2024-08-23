@@ -1,8 +1,5 @@
-// auth.ts
-
 import { mockToken } from "@/utils/mockToken";
 
-// Define a User type for better type safety
 interface User {
   phoneNumber: string;
   password: string;
@@ -17,7 +14,7 @@ export const registerUser = (phoneNumber: string, password: string, name: string
 
   setTimeout(() => {
     localStorage.removeItem("jwt");
-  }, 3600 * 1000); // JWT expires after 1 hour
+  }, 3600 * 1000); 
 
   return mockToken.token;
 };
@@ -29,14 +26,13 @@ export const loginUser = (phoneNumber: string, password: string): string | null 
     
     setTimeout(() => {
       localStorage.removeItem("jwt");
-    }, 3600 * 1000); // JWT expires after 1 hour
+    }, 3600 * 1000); 
     
     return mockToken.token;
   }
-  return null; // Handle invalid credentials
+  return null;
 };
 
 export const logoutUser = (): void => {
   localStorage.removeItem("jwt");
-  // localStorage.removeItem("user");
 };

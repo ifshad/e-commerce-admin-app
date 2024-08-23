@@ -38,7 +38,7 @@ const AdminProductList = () => {
   return (
     <div className="container">
       <h1 className="lg:text-6xl md:text-4xl text-3xl font-semibold lg:m-5 md:m-3 m-2 text-center">
-        Add your product!
+        Product List
       </h1>
       <Table>
         <TableCaption>A list of your products available.</TableCaption>

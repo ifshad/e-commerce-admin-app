@@ -13,7 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { FileWarningIcon } from "lucide-react";
-import { fetchProducts } from "../services/productService";
+import { fetchProducts } from "../../services/productService";
 
 export interface Product {
   id: number;
@@ -47,7 +47,7 @@ const ProductsPage = () => {
         {products.length === 0 ? (
           <p className="text-center text-xl mt-5">No products available.</p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 w-11/12 mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-11/12 mx-auto">
             {products.map((product) => (
               <Card
                 key={product.id}

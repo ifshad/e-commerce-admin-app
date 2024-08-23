@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import Header from "@/components/layout/Header";
 import NextTopLoader from "nextjs-toploader";
 
@@ -10,8 +10,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Admin Panel",
-  description: "Manage your products",
+  title: "Admin Panel | Login",
+  description: "Login to manage your products",
 };
 
 export default function RootLayout({
@@ -22,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        {children}
+        <NextTopLoader />
+        <Header />
+        <div>{children}</div>
       </body>
     </html>
   );

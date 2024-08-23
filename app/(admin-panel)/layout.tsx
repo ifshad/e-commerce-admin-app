@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import Header from "@/components/layout/Header";
 import NextTopLoader from "nextjs-toploader";
+import Sidebar from "@/components/admin-panel/sidebar";
+import ProtectRoute from "@/utils/ProtectRoute";
 
 const roboto = Roboto({
   weight: ["400", "500", "700", "900"],
@@ -10,8 +12,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Admin Panel",
-  description: "Manage your products",
+  title: "Admin Panel | E-Commerce",
+  description: "Manage your products professionally",
 };
 
 export default function RootLayout({
@@ -22,7 +24,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        {children}
+        <NextTopLoader />
+        <div className="flex">
+          <ProtectRoute>
+            <Sidebar />
+            <div className="w-full">
+              <Header />
+              <div className="ml-64 p-6">{children}</div>
+            </div>
+          </ProtectRoute>
+        </div>
       </body>
     </html>
   );

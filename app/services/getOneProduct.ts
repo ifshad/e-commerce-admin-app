@@ -1,4 +1,4 @@
-import { Product } from "../products/page";
+import { Product } from "../(admin-panel)/products/page";
 import { fetchProducts } from "./productService";
 
 export default async function getOneProduct(

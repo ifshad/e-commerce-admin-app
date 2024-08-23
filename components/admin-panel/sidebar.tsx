@@ -29,7 +29,7 @@ const Sidebar = () => {
             <Link
               href="/dashboard"
               className={`flex items-center hover:text-purple-500 ${
-                pathname === "/dashboard" ? "text-purple-500" : "text-gray-700"
+                pathname === "/dashboard" ? "text-purple-600" : "text-gray-700"
               }`}
             >
               <AiOutlineDashboard className="w-6 h-6 mr-3" />
@@ -44,7 +44,7 @@ const Sidebar = () => {
                 pathname === "/products" ||
                 pathname === "/admin/products" ||
                 pathname === "/admin/products/add-product"
-                  ? "text-purple-500"
+                  ? "text-purple-600"
                   : "text-gray-700"
               }`}
             >
@@ -63,7 +63,7 @@ const Sidebar = () => {
                     href="/products"
                     className={`hover:text-purple-500 ${
                       pathname === "/products"
-                        ? "text-purple-500"
+                        ? "text-purple-600"
                         : "text-gray-700"
                     }`}
                   >
@@ -76,7 +76,7 @@ const Sidebar = () => {
                     href="/admin/products"
                     className={`hover:text-purple-500 ${
                       pathname === "/admin/products"
-                        ? "text-purple-500"
+                        ? "text-purple-600"
                         : "text-gray-700"
                     }`}
                   >
@@ -88,7 +88,7 @@ const Sidebar = () => {
                     href="/admin/products/add-product"
                     className={`hover:text-purple-500 ${
                       pathname === "/admin/products/add-product"
-                        ? "text-purple-500"
+                        ? "text-purple-600"
                         : "text-gray-700"
                     }`}
                   >
@@ -104,7 +104,7 @@ const Sidebar = () => {
               href="/admin/orders"
               className={`flex items-center hover:text-purple-500 ${
                 pathname === "/admin/orders"
-                  ? "text-purple-500"
+                  ? "text-purple-600"
                   : "text-gray-700"
               }`}
             >
@@ -118,7 +118,7 @@ const Sidebar = () => {
               href="/admin/customers"
               className={`flex items-center hover:text-purple-500 ${
                 pathname === "/admin/customers"
-                  ? "text-purple-500"
+                  ? "text-purple-600"
                   : "text-gray-700"
               }`}
             >
