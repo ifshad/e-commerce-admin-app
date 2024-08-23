@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Wireless Headphones",
       "description": "Noise-cancelling over-ear headphones with Bluetooth connectivity.",
       "price": 199.99,
@@ -10,7 +10,7 @@
       "imageUrl": "https://example.com/images/wireless-headphones.jpg"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Smartphone",
       "description": "Latest model with advanced features and 128GB storage.",
       "price": 699.99,
@@ -19,7 +19,7 @@
       "imageUrl": "https://example.com/images/smartphone.jpg"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Running Shoes",
       "description": "Lightweight running shoes with breathable material.",
       "price": 79.99,
@@ -28,7 +28,7 @@
       "imageUrl": "https://example.com/images/running-shoes.jpg"
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "Water Bottle",
       "description": "Insulated stainless steel water bottle, 750ml.",
       "price": 24.99,
@@ -37,7 +37,7 @@
       "imageUrl": "https://example.com/images/water-bottle.jpg"
     },
     {
-      "id": "5",
+      "id": 5,
       "name": "Laptop",
       "description": "15-inch laptop with 16GB RAM and 512GB SSD.",
       "price": 1199.99,
