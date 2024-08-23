@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/layout/Header";
 
 const roboto = Roboto({
-  weight: ['400', '500', '700', '900'],
-  subsets: ['latin'],
-})
+  weight: ["400", "500", "700", "900"],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "e-Commerce Admin App",
@@ -19,7 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.className}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
