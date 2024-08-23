@@ -4,13 +4,14 @@ import Link from "next/link";
 import { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import { AiOutlineDashboard, AiOutlineShoppingCart } from "react-icons/ai";
-import {
-  FaBoxOpen,
-  FaUsers,
-} from "react-icons/fa";
+import { FaBoxOpen, FaUsers } from "react-icons/fa";
+import { usePathname, useRouter } from "next/navigation";
 
 const Sidebar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const router = useRouter(); // Initialize the router
+  const pathname = usePathname();
+  console.log(pathname);
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
@@ -27,7 +28,9 @@ const Sidebar = () => {
           <li className="mb-4">
             <Link
               href="/dashboard"
-              className="flex items-center text-gray-700 hover:text-purple-500"
+              className={`flex items-center hover:text-purple-500 ${
+                pathname === "/dashboard" ? "text-purple-500" : "text-gray-700"
+              }`}
             >
               <AiOutlineDashboard className="w-6 h-6 mr-3" />
               Dashboard
@@ -37,7 +40,13 @@ const Sidebar = () => {
           <li className="mb-4">
             <div
               onClick={toggleExpand}
-              className="flex items-center text-gray-700 hover:text-purple-500 cursor-pointer"
+              className={`flex items-center cursor-pointer hover:text-purple-500 ${
+                pathname === "/products" ||
+                pathname === "/admin/products" ||
+                pathname === "/admin/products/add-product"
+                  ? "text-purple-500"
+                  : "text-gray-700"
+              }`}
             >
               <AiOutlineShoppingCart className="w-6 h-6 mr-3" />
               Products
@@ -52,7 +61,11 @@ const Sidebar = () => {
                 <li className="mb-2">
                   <Link
                     href="/products"
-                    className="text-gray-700 hover:text-purple-500"
+                    className={`hover:text-purple-500 ${
+                      pathname === "/products"
+                        ? "text-purple-500"
+                        : "text-gray-700"
+                    }`}
                   >
                     Product Card
                   </Link>
@@ -61,7 +74,11 @@ const Sidebar = () => {
                 <li className="mb-2">
                   <Link
                     href="/admin/products"
-                    className="text-gray-700 hover:text-purple-500"
+                    className={`hover:text-purple-500 ${
+                      pathname === "/admin/products"
+                        ? "text-purple-500"
+                        : "text-gray-700"
+                    }`}
                   >
                     Product List
                   </Link>
@@ -69,7 +86,11 @@ const Sidebar = () => {
                 <li>
                   <Link
                     href="/admin/products/add-product"
-                    className="text-gray-700 hover:text-purple-500"
+                    className={`hover:text-purple-500 ${
+                      pathname === "/admin/products/add-product"
+                        ? "text-purple-500"
+                        : "text-gray-700"
+                    }`}
                   >
                     Add Product
                   </Link>
@@ -81,7 +102,11 @@ const Sidebar = () => {
           <li className="mb-4">
             <Link
               href="/admin/orders"
-              className="flex items-center text-gray-700 hover:text-purple-500"
+              className={`flex items-center hover:text-purple-500 ${
+                pathname === "/admin/orders"
+                  ? "text-purple-500"
+                  : "text-gray-700"
+              }`}
             >
               <FaBoxOpen className="w-6 h-6 mr-3" />
               Orders
@@ -91,7 +116,11 @@ const Sidebar = () => {
           <li className="mb-4">
             <Link
               href="/admin/customers"
-              className="flex items-center text-gray-700 hover:text-purple-500"
+              className={`flex items-center hover:text-purple-500 ${
+                pathname === "/admin/customers"
+                  ? "text-purple-500"
+                  : "text-gray-700"
+              }`}
             >
               <FaUsers className="w-6 h-6 mr-3" />
               Customers
