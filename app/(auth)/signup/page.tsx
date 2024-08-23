@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
 import { useRouter } from "next/navigation";
+import { registerUser } from "@/utils/auth";
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -22,6 +23,14 @@ const SignUpPage = () => {
     };
     console.log(signupInfo);
     // setLoading(true);
+    const token = registerUser(number, password, name, email);
+    if (token) {
+      // Redirect to dashboard or home
+      router.push("/");
+    } else {
+      // Show error
+      console.log("an error occured");
+    }
 
     e.target.reset();
   }

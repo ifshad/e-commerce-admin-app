@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
 import { useRouter } from "next/navigation";
+import { loginUser } from "@/utils/auth";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -10,12 +11,21 @@ const LoginPage = () => {
     e.preventDefault();
     const form: any = new FormData(e.currentTarget);
     const password: any = form.get("password");
-    const email: any = form.get("email");
+    const phoneNumber: any = form.get("phoneNumber");
 
     const loginInfo = {
-      Email: email,
+      PhoneNumber: phoneNumber,
       Password: password,
     };
+    const token = loginUser(phoneNumber, password);
+    if (token) {
+      // Redirect to dashboard or home
+      router.push("/");
+      console.log(phoneNumber);
+    } else {
+      // Show error
+      console.log("an error occured");
+    }
     e.target.reset();
   };
 
@@ -36,18 +46,18 @@ const LoginPage = () => {
             <form onSubmit={handleSubmit} className="flex flex-col gap-y-5">
               <div className="relative">
                 <input
-                  type="email"
-                  name="email"
-                  id="email"
+                  type="text"
+                  name="phoneNumber"
+                  id="phoneNumber"
                   className="p-3 bg-transparent border border-gray-500 rounded-[.5rem] outline-none peer w-full placeholder-transparent focus:border-primary"
-                  placeholder="email"
+                  placeholder="phoneNumber"
                   required
                 />
                 <label
-                  htmlFor="email"
+                  htmlFor="phoneNumber"
                   className="absolute left-3 -top-3 cursor-text  bg-secondary-color px-1 text-base lg:peer-focus:text-base md:peer-focus:text-base peer-focus:text-sm peer-placeholder-shown:text-slate-400 peer-placeholder-shown:translate-y-6 peer-placeholder-shown:font-medium peer-placeholder-shown:bg-[#D9D9D9] peer-focus:bg-[#D9D9D9]  peer-focus:-translate-y-0  transition-all duration-200"
                 >
-                  Email
+                  Phone No.
                 </label>
               </div>
               <div className="relative">

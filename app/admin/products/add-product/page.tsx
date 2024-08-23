@@ -55,7 +55,7 @@ const SellerPage = () => {
   }
   return (
     <div className="w-full flex flex-col items-center">
-      <h1 className="lg:text-6xl md:text-4xl text-3xl font-semibold lg:m-5 md:m-3 m-2 text-white/95">
+      <h1 className="lg:text-6xl md:text-4xl text-3xl font-semibold lg:m-5 md:m-3 m-2">
         Add your product!
       </h1>
       {/* Registration Form */}

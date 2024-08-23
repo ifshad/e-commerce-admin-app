@@ -22,8 +22,17 @@ import {
 import { BiLogIn, BiLogOut, BiMenu } from "react-icons/bi";
 import logo from "@/public/Images/TechDynasty logo.png";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { logoutUser } from "@/utils/auth";
 
 const Header: FC = () => {
+  const token = localStorage.getItem("jwt");
+  const router = useRouter();
+
+  const handleLogout = () => {
+    logoutUser(); // Remove JWT and user data
+    router.push("/login"); // Redirect to login page
+  };
   return (
     <div className="p-2 flex items-center justify-between border-x-2 border-t-2 rounded-t border-[#D9D9D9]/20 shadow-lg sticky top-0 z-50 backdrop-blur-lg bg-[#D9D9D9] bg-opacity-[13.5%] ">
       <div>
@@ -54,16 +63,20 @@ const Header: FC = () => {
                 <Link href="/admin/products">Products</Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Link href="/admin/products/add-product">Products</Link>
+                <Link href="/admin/products/add-product">Add Products</Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
       <div className="hidden md:flex items-center gap-3">
-        <Button variant="link" className="">
-          <Link href="/login">Login</Link>
-        </Button>
+        {token ? (
+          <Button onClick={handleLogout}>Logout</Button>
+        ) : (
+          <Button className="">
+            <Link href="/login">Login</Link>
+          </Button>
+        )}
       </div>
 
       <div className="md:hidden relative">
