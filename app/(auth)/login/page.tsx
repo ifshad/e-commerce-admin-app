@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { useRouter } from "next/navigation";
 import { loginUser } from "@/utils/auth";
+import Swal from "sweetalert2";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -20,13 +21,44 @@ const LoginPage = () => {
     const token = loginUser(phoneNumber, password);
     if (token) {
       // Redirect to dashboard or home
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Signed in successfully",
+      });
+      e.target.reset();
       router.push("/");
       console.log(phoneNumber);
     } else {
       // Show error
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: "An error occured!",
+      });
       console.log("an error occured");
     }
-    e.target.reset();
+    
   };
 
   return (
@@ -37,7 +69,8 @@ const LoginPage = () => {
             Welcome Back!
           </h1>
           <p className="lg:m-5 md:m-3 m-2">
-            Log in to your admin account to continue managing and access your personalized dashboard.
+            Log in to your admin account to continue managing and access your
+            personalized dashboard.
           </p>
         </div>
         <div className="col-span-12 lg:col-span-5 lg:col-start-8">

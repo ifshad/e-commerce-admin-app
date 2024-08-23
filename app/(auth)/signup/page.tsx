@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { useRouter } from "next/navigation";
 import { registerUser } from "@/utils/auth";
+import Swal from "sweetalert2";
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -26,13 +27,42 @@ const SignUpPage = () => {
     const token = registerUser(number, password, name, email);
     if (token) {
       // Redirect to dashboard or home
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Signed in successfully",
+      });
+      e.target.reset();
       router.push("/");
     } else {
       // Show error
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: "An error occured!",
+      });
       console.log("an error occured");
     }
-
-    e.target.reset();
   }
   return (
     <div className="container py-14 lg:py-20">
@@ -127,7 +157,8 @@ const SignUpPage = () => {
             e-Commerce Admin
           </h1>
           <p className="lg:m-5 md:m-3 m-2">
-            Create your admin account today to start managing your orders easily.
+            Create your admin account today to start managing your orders
+            easily.
           </p>
         </div>
       </div>
