@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import NextTopLoader from "nextjs-toploader";
 import Sidebar from "@/components/admin-panel/sidebar";
 import ProtectRoute from "@/utils/ProtectRoute";
+import { AuthProvider } from "@/providers/AuthContext";
 
 const roboto = Roboto({
   weight: ["400", "500", "700", "900"],
@@ -25,15 +26,17 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.className}>
         <NextTopLoader />
-        <div className="flex">
+        <AuthProvider>
           <ProtectRoute>
-            <Sidebar />
-            <div className="w-full">
-              <Header />
-              <div className="ml-64 p-6">{children}</div>
+            <div className="flex">
+              <Sidebar />
+              <div className="w-full">
+                <Header />
+                <div className="ml-64 p-6">{children}</div>
+              </div>
             </div>
           </ProtectRoute>
-        </div>
+        </AuthProvider>
       </body>
     </html>
   );

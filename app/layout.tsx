@@ -3,6 +3,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import NextTopLoader from "nextjs-toploader";
+import { AuthProvider } from "@/providers/AuthContext";
 
 const roboto = Roboto({
   weight: ["400", "500", "700", "900"],
@@ -22,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        {children}
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );

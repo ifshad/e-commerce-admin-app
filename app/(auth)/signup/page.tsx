@@ -52,7 +52,7 @@ const SignUpPage = () => {
           icon: "success",
           title: "Signed in successfully",
         });
-        router.push("/login");
+        router.push("/");
       })
       .catch((error) => {
         console.log(error);

@@ -3,15 +3,13 @@
 import React, { createContext, useContext, ReactNode } from "react";
 import { useAuth, AuthState } from "@/hooks/useAuth";
 
-export const AuthContext = createContext<AuthState | undefined>(undefined);
+const AuthContext = createContext<AuthState | undefined>(undefined);
 
 interface AuthProviderProps {
   children: ReactNode;
 }
 
-export function AuthProvider({
-  children,
-}: AuthProviderProps): JSX.Element | any {
+export function AuthProvider({ children }: AuthProviderProps) {
   const authState = useAuth();
 
   return (

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useAuthContext } from "@/providers/AuthContext";
 import { useRouter } from "next/navigation";
@@ -10,15 +10,19 @@ interface ProtectRouteProps {
 
 const ProtectRoute = ({ children }: ProtectRouteProps) => {
   const router = useRouter();
+  const { user, loading } = useAuthContext();
 
   useEffect(() => {
-    const { user, loading } = useAuthContext();
-    if (!user) {
+    if (!loading && !user) {
       router.push("/login");
     }
-  }, [router]);
+  }, [user, loading, router]);
 
-  return children;
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
+
+  return user ? children : null;
 };
 
 export default ProtectRoute;
