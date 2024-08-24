@@ -65,7 +65,7 @@ const AdminProductList = () => {
               <TableCell className="text-right">{product.price}</TableCell>
               <TableCell>
                 <Button>
-                  <Link href={`/admin/products/${product.id}`}>Details</Link>
+                  <Link href={`/admin/products/${product.id}`}>Action</Link>
                 </Button>
               </TableCell>
             </TableRow>

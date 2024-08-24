@@ -81,7 +81,7 @@ const AdminCustomerList = () => {
               </TableCell>
               <TableCell>
                 <Button>
-                  <Link href={`/admin/customers/${customer.id}`}>Details</Link>
+                  <Link href={`/admin/customers/${customer.id}`}>Action</Link>
                 </Button>
               </TableCell>
             </TableRow>

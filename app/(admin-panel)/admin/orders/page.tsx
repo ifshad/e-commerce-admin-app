@@ -88,7 +88,7 @@ const AdminOrderList = () => {
               </TableCell>
               <TableCell>
               <Button>
-                  <Link href={`/admin/orders/${order.id}`}>Details</Link>
+                  <Link href={`/admin/orders/${order.id}`}>Action</Link>
                 </Button>
               </TableCell>
             </TableRow>

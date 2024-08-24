@@ -67,7 +67,7 @@ const ProductsPage = () => {
                 </CardContent>
                 <CardFooter className="row-span-1 flex justify-between">
                   <Button>
-                    <Link href={`/products/${product.id}`}>Details</Link>
+                    <Link href={`/products/${product.id}`}>Action</Link>
                   </Button>
                   <CardDescription>Quant: {product.stock}</CardDescription>
                 </CardFooter>
