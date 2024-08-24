@@ -18,7 +18,7 @@ const Header: FC = () => {
       .catch((error) => console.log(error));
   };
   return (
-    <div className="p-2 flex items-center justify-end border-x-2 border-t-2 rounded-t border-[#D9D9D9]/20 shadow-lg sticky top-0 z-30 backdrop-blur-lg bg-[#D9D9D9] bg-opacity-[13.5%] ">
+    <div className="p-2 flex items-center justify-end border-x-2 border-t-2 rounded-t border-[#D9D9D9]/20 shadow-lg sticky top-0 z-30 backdrop-blur-3xl bg-[#D9D9D9] bg-opacity-[13.5%] ">
       <div className="hidden md:flex items-center gap-3">
         {user ? (
           <Button onClick={handleLogOut}>Logout</Button>

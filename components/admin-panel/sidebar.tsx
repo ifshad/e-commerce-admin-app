@@ -32,9 +32,9 @@ const Sidebar = () => {
         <ul>
           <li className="mb-4">
             <Link
-              href="/dashboard"
+              href="/"
               className={`flex items-center hover:text-purple-500 ${
-                pathname === "/dashboard" ? "text-purple-600" : "text-gray-700"
+                pathname === "/" ? "text-purple-600" : "text-gray-700"
               }`}
             >
               <AiOutlineDashboard className="w-6 h-6 mr-3" />
